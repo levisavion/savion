@@ -16,7 +16,6 @@ import static io.gatling.javaapi.core.CoreDsl.incrementConcurrentUsers;
 import static io.gatling.javaapi.core.CoreDsl.pause;
 import static io.gatling.javaapi.core.CoreDsl.repeat;
 import static io.gatling.javaapi.core.CoreDsl.scenario;
-import static io.gatling.javaapi.core.CoreDsl.setUp;
 import static io.gatling.javaapi.core.CoreDsl.uniformRandomSwitch;
 import static io.gatling.javaapi.http.HttpDsl.http;
 import static io.gatling.javaapi.http.HttpDsl.status;
