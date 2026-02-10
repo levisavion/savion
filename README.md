@@ -47,13 +47,13 @@ The goal is to identify:
 ```bash
 mvn gatling:test \
   -DbaseUrl=http://your-artifactory-host:8081 \
-  -DstartConcurrentJobs=200 \
+  -DstartConcurrentJobs=500 \
   -DconcurrencyStep=100 \
-  -DconcurrencyLevels=5 \
+  -DconcurrencyLevels=4 \
   -DstartLevelDurationSeconds=180 \
   -DlevelDurationSeconds=300 \
   -DrampDurationSeconds=45 \
-  -DdependenciesPerJob=150 \
+  -DdependenciesPerJob=500 \
   -DartifactP95UnacceptableMs=1500 \
   -DpermissionP95UnacceptableMs=1200 \
   -DcanaryP95UnacceptableMs=800 \

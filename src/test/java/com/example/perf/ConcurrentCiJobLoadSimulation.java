@@ -30,9 +30,9 @@ public class ConcurrentCiJobLoadSimulation extends Simulation {
 
   private static final String BASE_URL = System.getProperty("baseUrl", "http://localhost:8081");
 
-  private static final int START_CONCURRENT_JOBS = intProp("startConcurrentJobs", 100);
+  private static final int START_CONCURRENT_JOBS = intProp("startConcurrentJobs", 500);
   private static final int CONCURRENCY_STEP = intProp("concurrencyStep", 100);
-  private static final int CONCURRENCY_LEVELS = intProp("concurrencyLevels", 6);
+  private static final int CONCURRENCY_LEVELS = intProp("concurrencyLevels", 5);
   private static final Duration START_LEVEL_DURATION =
       Duration.ofSeconds(intProp("startLevelDurationSeconds", 180));
   private static final Duration LEVEL_DURATION =
@@ -40,7 +40,7 @@ public class ConcurrentCiJobLoadSimulation extends Simulation {
   private static final Duration RAMP_DURATION =
       Duration.ofSeconds(intProp("rampDurationSeconds", 45));
 
-  private static final int DEPENDENCY_REQUESTS_PER_JOB = intProp("dependenciesPerJob", 120);
+  private static final int DEPENDENCY_REQUESTS_PER_JOB = intProp("dependenciesPerJob", 500);
   private static final Duration INTER_DEPENDENCY_PAUSE =
       Duration.ofMillis(intProp("interDependencyPauseMs", 30));
 
@@ -53,7 +53,7 @@ public class ConcurrentCiJobLoadSimulation extends Simulation {
   private static final double FAILED_REQUESTS_UNACCEPTABLE_PCT =
       doubleProp("failedRequestsUnacceptablePct", 2.0d);
 
-  private static final int CANARY_CONCURRENT_USERS = intProp("canaryConcurrentUsers", 5);
+  private static final int CANARY_CONCURRENT_USERS = intProp("canaryConcurrentUsers", 10);
   private static final Duration CANARY_POLL_INTERVAL =
       Duration.ofSeconds(intProp("canaryPollIntervalSeconds", 5));
   private static final Duration CANARY_DURATION = totalTestDuration();
