@@ -78,56 +78,56 @@ public class ConcurrentCiJobLoadSimulation extends Simulation {
               .basicAuth("#{username}", "#{password}")
               .queryParam("list", "1")
               .queryParam("deep", "0")
-              .check(status().in(200, 401, 403, 404)));
+              .check(status().is(200)));
 
   private final ChainBuilder mavenInstall =
       exec(
               http("Artifact Resolution - Maven Metadata")
                   .get("/artifactory/api/storage/#{mavenVirtualRepo}/org/apache/commons/commons-lang3/3.14.0")
                   .basicAuth("#{username}", "#{password}")
-                  .check(status().in(200, 401, 403, 404)))
+                  .check(status().is(200)))
           .exec(
               http("Artifact Resolution - Maven Binary")
                   .get("/artifactory/#{mavenVirtualRepo}/org/apache/commons/commons-lang3/3.14.0/commons-lang3-3.14.0.jar")
                   .basicAuth("#{username}", "#{password}")
-                  .check(status().in(200, 302, 304, 401, 403, 404)));
+                  .check(status().in(200, 302, 304)));
 
   private final ChainBuilder npmInstall =
       exec(
               http("Artifact Resolution - NPM Metadata")
                   .get("/artifactory/api/npm/#{npmVirtualRepo}/lodash")
                   .basicAuth("#{username}", "#{password}")
-                  .check(status().in(200, 401, 403, 404)))
+                  .check(status().is(200)))
           .exec(
               http("Artifact Resolution - NPM Tarball")
                   .get("/artifactory/#{npmVirtualRepo}/lodash/-/lodash-4.17.21.tgz")
                   .basicAuth("#{username}", "#{password}")
-                  .check(status().in(200, 302, 304, 401, 403, 404)));
+                  .check(status().in(200, 302, 304)));
 
   private final ChainBuilder pypiInstall =
       exec(
               http("Artifact Resolution - PyPI Simple Index")
                   .get("/artifactory/api/pypi/#{pypiVirtualRepo}/simple/requests/")
                   .basicAuth("#{username}", "#{password}")
-                  .check(status().in(200, 401, 403, 404)))
+                  .check(status().is(200)))
           .exec(
               http("Artifact Resolution - PyPI Wheel")
                   .get("/artifactory/#{pypiVirtualRepo}/packages/requests-2.32.5-py3-none-any.whl")
                   .basicAuth("#{username}", "#{password}")
-                  .check(status().in(200, 302, 304, 401, 403, 404)));
+                  .check(status().in(200, 302, 304)));
 
   private final ChainBuilder dockerPull =
       exec(
               http("Artifact Resolution - Docker Tags")
                   .get("/artifactory/api/docker/#{dockerVirtualRepo}/v2/library/busybox/tags/list")
                   .basicAuth("#{username}", "#{password}")
-                  .check(status().in(200, 401, 403, 404)))
+                  .check(status().is(200)))
           .exec(
               http("Artifact Resolution - Docker Manifest")
                   .get("/artifactory/api/docker/#{dockerVirtualRepo}/v2/library/busybox/manifests/latest")
                   .header("Accept", "application/vnd.docker.distribution.manifest.v2+json")
                   .basicAuth("#{username}", "#{password}")
-                  .check(status().in(200, 401, 403, 404)));
+                  .check(status().is(200)));
 
   private final ScenarioBuilder ciBuildStart =
       scenario("CI Build Start - Mixed Dependency Resolution")
@@ -153,7 +153,7 @@ public class ConcurrentCiJobLoadSimulation extends Simulation {
                       http("Canary - System Ping")
                           .get("/artifactory/api/system/ping")
                           .basicAuth("#{username}", "#{password}")
-                          .check(status().in(200, 401, 403)))
+                          .check(status().is(200)))
                   .exec(pause(CANARY_POLL_INTERVAL)));
 
   public ConcurrentCiJobLoadSimulation() {

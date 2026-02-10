@@ -42,6 +42,8 @@ The goal is to identify:
 ## Run
 
 1. Update feeders with real non-admin users and repository names.
+   - users must have read permissions on the listed virtual repositories
+   - the simulation treats unauthorized responses as failures by design
 2. Run Gatling:
 
 ```bash
