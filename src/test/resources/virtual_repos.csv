@@ -1,0 +1,3 @@
+mavenVirtualRepo,npmVirtualRepo,pypiVirtualRepo,dockerVirtualRepo,metadataVirtualRepo
+maven-virtual,npm-virtual,pypi-virtual,docker-virtual,all-packages-virtual
+maven-virtual-2,npm-virtual-2,pypi-virtual-2,docker-virtual-2,all-packages-virtual-2
